@@ -39,7 +39,7 @@ public class RPSLS {
         return results[number];
     }
 
-     void welcome() {
+    void welcome() {
         System.out.println("Welcome to the game!");
         System.out.println("Type \"rules\" in the console for instructions");
     }
@@ -59,15 +59,22 @@ public class RPSLS {
     private String getUserChoice() {
         System.out.println("Type your choice: ");
         userAnswer = input.nextLine();
+        if (!userAnswer.equalsIgnoreCase("rock") || !userAnswer.equalsIgnoreCase("paper") ||
+                !userAnswer.equalsIgnoreCase("scissors") ||
+                !userAnswer.equalsIgnoreCase("lizard") ||
+                !userAnswer.equalsIgnoreCase("spock")) {
+            System.out.println("Invalid choice, try again: ");
+            userAnswer = input.nextLine();
+        }
         return userAnswer;
     }
 
     private void printAnswers() {
         System.out.println("Computer's choice: " + randomAnswer);
-       //System.out.println("Your choice: " + userAnswer);
+        //System.out.println("Your choice: " + userAnswer);
     }
 
-    private  void gameLogic() {
+    private void gameLogic() {
 
         if (userAnswer.equalsIgnoreCase("rock") && (randomAnswer.equalsIgnoreCase("scissors") || randomAnswer.equalsIgnoreCase("lizard"))) {
             win();
@@ -102,7 +109,7 @@ public class RPSLS {
         playAgain();
     }
 
-    private  void lose() {
+    private void lose() {
         System.out.println("You lose!");
         playAgain();
     }
@@ -113,11 +120,11 @@ public class RPSLS {
         playAgain();
     }
 
-    private void gameExit(){
+    private void gameExit() {
         running = false;
     }
 
-    private  void playAgain() {
+    private void playAgain() {
         System.out.println("Would you like to play again? Y/N");
         String choice = input.nextLine();
         if (choice.equalsIgnoreCase("y")) {
@@ -136,8 +143,6 @@ public class RPSLS {
         getUserChoice();
         printAnswers();
         gameLogic();
-        playAgain();
-        System.out.println("------------------------------------------------------");
     }
 
 

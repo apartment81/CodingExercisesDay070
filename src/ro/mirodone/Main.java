@@ -3,12 +3,12 @@ package ro.mirodone;
 public class Main {
 
     public static void main(String[] args) {
-	// start game
+        // start game
 
         RPSLS game = new RPSLS();
-         boolean state =  game.running =true;
+        game.running = true;
         game.welcome();
-        while (state){
+        while (game.running) {
             game.runGame();
         }
 
